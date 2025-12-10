@@ -1,0 +1,191 @@
+#separator:;
+#html:true
+#tags column:3
+
+Blockchain;Um registro distribuído e imutável de transações que resolve a necessidade de confiança sem intermediários centralizados. Cada bloco contém hash do anterior, formando uma cadeia criptográfica.;Fundações
+Consenso;Mecanismo que permite múltiplos nós concordarem sobre o próximo bloco válido sem autoridade central. Exemplos: PoW (Bitcoin), PoS (Ethereum 2.0).;Fundações
+PoW - Proof of Work;Sistema de consenso baseado em trabalho computacional (mineração). Segurança vem do custo econômico de atacar a rede. Usado por Bitcoin.;Fundações
+PoS - Proof of Stake;Sistema de consenso onde validadores travam capital (stake) para validar blocos. Reduz custos energéticos vs PoW. Usado por Ethereum desde 2022.;Fundações
+Ledger (Razão);Registro central que mantém o estado de todas as contas e saldos. É o "livro de contabilidade" da blockchain.;Fundações
+Node (Nó);Computador que valida, armazena e transmite blocos e transações. Executa as regras da rede.;Fundações
+Block (Bloco);Conjunto de transações e metadados (timestamp, hash anterior, nonce) agrupados e validados juntos. Gerado aproximadamente a cada período (ex: 12s no Ethereum).;Fundações
+Hash;Função criptográfica que transforma dados em string única. Pequena mudança nos dados = hash completamente diferente. Base da segurança de blockchain.;Fundações
+Merkle Tree;Estrutura que agrupa hashes de transações em árvore. Permite verificar se uma tx está em um bloco com O(log n) dados.;Fundações
+Nonce;Número único por conta que incrementa a cada transação. Evita replays de transações e ordena execução.;Fundações
+
+Smart Contract;Código executado on-chain que automatiza acordos sem intermediários. Determinístico e imutável. Exemplos: DEXs, lending protocols, NFTs.;Smart Contracts
+EVM - Ethereum Virtual Machine;Runtime padronizado que executa Smart Contracts. Compatível com múltiplas L1/L2 (Polygon, Arbitrum, etc).;Smart Contracts
+Solidity;Linguagem de programação principal para EVM. Sintaxe similar a JavaScript. Desenvolvida pela Ethereum Foundation.;Smart Contracts
+Vyper;Linguagem alternativa para EVM focada em segurança e simplicidade. Mais verbosa que Solidity mas reduz bugs.;Smart Contracts
+Gas;Unidade de custo para executar operações em blockchain (cálculos, armazenamento, transferências). Taxa = gas used × gas price.;Smart Contracts
+Gas Limit;Máximo de gas que você está disposto a pagar por uma transação. Protege contra loops infinitos e custos surpresa.;Smart Contracts
+Gas Price;Preço por unidade de gas. Mercado competitivo: quanto maior, mais rápido a tx é processada. Medido em Gwei.;Smart Contracts
+Gwei;Unidade de ETH. 1 ETH = 10^9 Gwei. Usado para expressar gas prices e pequenos valores.;Smart Contracts
+Wei;Menor unidade de ETH. 1 ETH = 10^18 Wei. Usado internamente em cálculos.;Smart Contracts
+Fallback Function;Função especial em contrato que é chamada quando nenhuma outra função matcheia. Pode ser usada para receber ETH.;Smart Contracts
+Constructor;Função especial executada uma única vez no deploy do contrato. Inicializa estado e variáveis.;Smart Contracts
+Modifier;Reusable bloco de código que altera comportamento de funções (ex: require, validação de acesso). Exemplo: onlyOwner.;Smart Contracts
+Event;Mecanismo de logging on-chain que permite apps externos monitorar ações de contrato. Emitido mas não armazenado no estado.;Smart Contracts
+Revert;Desfaz todas as mudanças de estado em uma transação e retorna erro. Usado por require() e revert().;Smart Contracts
+Assembly (Yul);Linguagem de baixo nível dentro de Solidity para otimizações avançadas. Perigosa, use com cuidado.;Smart Contracts
+
+Wallet (Carteira);Software/hardware que gerencia chaves privadas e assina transações. Resolve propriedade e controle de ativos. Dois tipos: custodial (terceiro guarda a chave) e non-custodial (usuário controla).;Contas & Wallets
+Private Key (Chave Privada);String de 256 bits que prova propriedade de uma conta. Deve ser mantida SECRETA. Se vazar, alguém pode roubar seus ativos.;Contas & Wallets
+Public Key (Chave Pública);Derivada criptograficamente da private key. Pode ser compartilhada. Usada para verificar assinatura.;Contas & Wallets
+Address (Endereço);Identificador público em blockchain, derivado da public key. Formato: 0x + 40 caracteres hexadecimais. É o "número da conta".;Contas & Wallets
+Seed Phrase (Frase Semente);Sequência de 12 ou 24 palavras que regenera todas as suas chaves. Se a perder, perde acesso permanentemente.;Contas & Wallets
+MetaMask;Extensão de navegador que gerencia wallets Ethereum e EVM-compatíveis. Permite assinar txs e conectar a dApps.;Contas & Wallets
+WalletConnect;Protocolo que conecta dApps a wallets mobile/desktop via QR code. Permite assinatura remota sem expor private key.;Contas & Wallets
+Custodial Wallet;Terceiro (ex: exchange, banco) guarda a private key. Mais fácil mas menos seguro e menos liberdade. Exemplo: contas em exchanges centralizadas.;Contas & Wallets
+Non-Custodial Wallet;Você guarda a private key. Mais seguro e livre, mas responsabilidade inteira é sua. Exemplo: MetaMask.;Contas & Wallets
+Hardware Wallet;Dispositivo físico (ex: Ledger, Trezor) que armazena chave privada offline. Altamente seguro, recomendado para fundos grandes.;Contas & Wallets
+Signature (Assinatura);Prova criptográfica de que você autorizou uma transação. Derivada de tx + private key. Não reveala a chave.;Contas & Wallets
+Testnet;Rede de teste (ex: Sepolia para Ethereum) onde ETH é grátis. Usada para desenvolver sem risco de perder fundos reais.;Contas & Wallets
+Faucet (Torneira);Serviço que distribui criptografia de teste grátis em testnets. Permite desenvolver sem investir.;Contas & Wallets
+
+Token (Fungível);Representação transferível de valor/direito que segue um padrão (ERC-20). Fungível = cada unidade é idêntica.;Tokens & Assets
+ERC-20;Padrão de token fungível no Ethereum. Define interface para transfer(), balanceOf(), approve(), etc. Mais usado para moedas/utilidade.;Tokens & Assets
+ERC-721;Padrão para NFTs (Non-Fungible Tokens). Cada token é único e identificável. Usado para colecionáveis, gaming, propriedade digital.;Tokens & Assets
+ERC-1155;Padrão multi-token que permite fungíveis e não-fungíveis no mesmo contrato. Mais eficiente em gas para múltiplos tokens.;Tokens & Assets
+NFT (Non-Fungible Token);Token único e não-intercambiável. Representa propriedade exclusiva. Usado para colecionáveis, arte digital, gaming, RWA.;Tokens & Assets
+Mint (Cunhagem);Processo de criar novos tokens. Aumenta supply total. Requer permissão (geralmente owner). Exemplo: cunhar novos ETH via staking rewards.;Tokens & Assets
+Burn (Queima);Destruir tokens permanentemente, reduzindo supply. Deflationary e comum em tokenomics. Exemplo: Ethereum queima fees após EIP-1559.;Tokens & Assets
+Allowance (Autorização);Quantia que uma conta autoriza outra a gastar/transferir em seu nome. Criada via approve(). Necessária para operações de contrato.;Tokens & Assets
+Transfer;Mover tokens de uma conta para outra. Simples e direto, apenas reduza saldo de A e aumente saldo de B.;Tokens & Assets
+TransferFrom;Transferir tokens em nome de outro (requer allowance prévio). Usado por DEXs, markets, contratos que precisam movimentar tokens de usuários.;Tokens & Assets
+Approve;Autorizar um terceiro (spender) a usar seus tokens até um limite. Necessário antes de TransferFrom.;Tokens & Assets
+Stablecoin;Token com peg (fixação) a um ativo estável (USD, ouro, etc). Reduz volatilidade e permite transações previsíveis. Exemplos: USDC (centralizado), DAI (descentralizado).;Tokens & Assets
+Wrapped Token;Token que representa um ativo em outra blockchain. Exemplo: WETH é Ethereum envolvido como ERC-20. Permite usar ETH em protocolos ERC-20.;Tokens & Assets
+Tokenomics;Design econômico de um token: supply máximo, inflação/deflação, distribuição inicial, incentivos. Crítico para sucesso de projeto.;Tokens & Assets
+Airdrop;Distribuição gratuita de tokens a usuários/detentores de outro token. Marketing e distribuição.;Tokens & Assets
+
+Layer 1 (L1);Blockchain base que fornece segurança e consenso fundamentais. Exemplos: Bitcoin, Ethereum, Solana. Lenta e cara (alta segurança = alto custo).;Escalabilidade
+Layer 2 (L2);Solução que roda sobre L1 para escala. Reduz custo/tempo mantendo segurança L1. Exemplos: Arbitrum, Optimism, Polygon zkEVM.;Escalabilidade
+Rollup;Técnica L2 que agrupa transações off-chain, prova/asserta no L1. Dois tipos: optimistic (assume válido, desafia se falso) e zk (prova criptográfica).;Escalabilidade
+Optimistic Rollup;Rollup que assume txs são válidas; se contestado, re-executa on-chain para verificar. Mais simples, fraud proof. Exemplos: Arbitrum, Optimism.;Escalabilidade
+zk Rollup (Zero-Knowledge);Rollup que gera prova criptográfica de validade (sem revelar dados). Imediato, sem período de disputa. Exemplos: StarkNet, zkSync.;Escalabilidade
+Sidechain;Cadeia paralela com consenso próprio e bridge para L1. Menos segura que L1 mas mais autônoma. Exemplo: Polygon PoS.;Escalabilidade
+Bridge (Ponte);Permite transferir ativos/mensagens entre blockchains. Dois lados: wrapper/lock em um lado, mint/unlock no outro. Exemplo: Wormhole, Stargate.;Escalabilidade
+Throughput;Número de transações por segundo que uma blockchain processa. Bitcoin: ~7 tx/s, Ethereum: ~15 tx/s, Arbitrum: ~4000 tx/s (teórico).;Escalabilidade
+Latency (Latência);Tempo entre submeter uma tx e confirmação final. Bitcoin: ~10min, Ethereum: ~12s, Solana: ~400ms. Afeta UX.;Escalabilidade
+Finality (Finalidade);Ponto após o qual uma transação não pode ser revertida. Bitcoin: ~1h, Ethereum: ~12.8min (2 épocas). Crítico para segurança.;Escalabilidade
+Cross-chain Communication;Protocolo que permite mensagens/ativos fluirem entre chains diferentes. Exemplo: Axelar, LayerZero. Aumenta composabilidade.;Escalabilidade
+
+Uniswap;Maior DEX do Ethereum, usa modelo AMM. Revolucionou liquidez permissionless. Versões: v1 (simples), v2 (most used), v3 (concentrada), v4 (hooks).;Projetos Principais
+Aave;Maior lending protocol na Web3. Permite emprestar/tomar emprestado com colateral. Gerido por governança (token AAVE).;Projetos Principais
+MakerDAO;Cria DAI (stablecoin descentralizada) através de MCD (Multi-Collateral Debt Position). Resolve estabilidade sem custódia.;Projetos Principais
+Compound;Lending protocol pioneiro (2018). Permite depósito de ativos e geração automática de juros (yield farming). Governança via token COMP.;Projetos Principais
+Yearn Finance;Agregador de yield que otimiza estratégias de retorno. Deposite, a Yearn move seu capital para melhor rendimento automaticamente.;Projetos Principais
+Curve Finance;DEX especializado em swaps entre stablecoins e assets correlated. Menor slippage que AMMs genéricas. Modelo: liquidity pools separadas.;Projetos Principais
+Balancer;DEX com pools customizáveis (não 50/50). Permite auto-rebalanceamento. Flexibilidade para mais pares de ativos.;Projetos Principais
+Lido;Liquid staking protocol. Stake ETH, receba stETH (token que cresce em valor). Resolve lock-in do staking.;Projetos Principais
+Arbitrum;L2 rollup otimista do Ethereum. Rápido, barato, compatível com Ethereum. Governado por token ARB.;Projetos Principais
+Optimism;L2 rollup otimista alternativo. Similar a Arbitrum, com ênfase em simplicity e expansão. Token OP.;Projetos Principais
+Polygon;Solução de escalabilidade multi-tipo (Polygon PoS: sidechain, Polygon zkEVM: rollup). Mais adotada em gaming/dApps por UX.;Projetos Principais
+Solana;L1 de alto throughput com consenso híbrido (Proof of History + PoS). Foco em velocidade. Atrai gaming/NFTs por baixo custo.;Projetos Principais
+Chainlink;Rede de oráculos descentralizados. Alimenta dados off-chain para contratos. Padrão de confiança para dados.;Projetos Principais
+Wormhole;Bridge cross-chain poderoso que conecta múltiplas L1/L2. Permite transferência segura de ativos e mensagens.;Projetos Principais
+The Graph;Indexador descentralizado. Cria subgraphs para queries rápidas em blockchain. Resolve problema de RPC lento para UIs complexas.;Projetos Principais
+Bitcoin;L1 original, dinheiro digital peer-to-peer. Pow baseado em SHA-256. ~21M BTC máximo. Imutável, sem smart contracts.;Projetos Principais
+Ethereum;L1 que adiciona Smart Contracts ao modelo blockchain. EVM como runtime. Maior ecossistema DeFi/dApp.;Projetos Principais
+
+DEX (Decentralized Exchange);Exchange sem custódia de ativos. Usuários retêm controle. Dois modelos: order book (raro) e AMM (comum).;Protocolos & Tipos
+AMM (Automated Market Maker);DEX sem livro de ordens. Usa fórmula matemática (ex: x*y=k) para precificar trades automaticamente. Liquidez = participação de lPs, não funding.;Protocolos & Tipos
+CEX (Centralized Exchange);Exchange tradicional (Binance, Kraken) que custdia ativos. Mais rápido/fácil para onboarding mas requer confiança.;Protocolos & Tipos
+Lending Protocol;Contrato que permite depositar ativos e receber juros (yield), ou tomar emprestado com colateral. Exemplos: Aave, Compound.;Protocolos & Tipos
+Liquidation;Quando colateral cai abaixo do mínimo requerido, o protocolo vende colateral para cobrir a dívida. Incentiva manutenção de posições saudáveis.;Protocolos & Tipos
+Yield Farming;Estratégia de depositar/tracar capital em protocolos para ganhar yield (juros, fees, tokens). Compõe múltiplas camadas de retorno.;Protocolos & Tipos
+Vault (Cofre);Contrato que agrega capital de usuários e executa estratégia automaticamente para maximizar rendimento. Exemplo: Yearn vaults.;Protocolos & Tipos
+Liquidity Pool;Fundo de dois tokens usado por AMM. Participantes (LPs) adicionam capital e recebem % das fees de trading.;Protocolos & Tipos
+LP (Liquidity Provider);Usuário que adiciona fundos a liquidity pool e ganha fees. Risco: impermanent loss (preço diverge entre tokens).;Protocolos & Tipos
+Impermanent Loss;Perda teórica quando preço relativo de dois tokens em um pool diverge muito. Mitigada por fees, mas risco real em alta volatilidade.;Protocolos & Tipos
+Slippage;Diferença entre preço esperado e preço executado em um trade. Maior em pools pequenos. Expresso em %.;Protocolos & Tipos
+MEV (Miner Extractable Value);Valor que mineradores/validadores extraem ao reordenar/incluir/excluir transações. Riscos: front-running, sandwich attacks.;Protocolos & Tipos
+Front-Running;Observar tx na mempool e submeter tx similar com gas maior para executar antes. Theft de oportunidade. Risco especialmente em AMMs.;Protocolos & Tipos
+Sandwich Attack;Observar swap em mempool, copiar com slippage menor antes dele (front-run), depois executar o swap original após (back-run). Roubo de value.;Protocolos & Tipos
+Flashloan;Empréstimo sem colateral que deve ser repago no mesmo bloco. Permite arbitragem complexa. Risco: exploração se lógica insegura.;Protocolos & Tipos
+Slasher;Em PoS, redução de stake por comportamento malicioso (ex: validar dois blocos na mesma altura). Incentiva honestidade.;Protocolos & Tipos
+
+DAO (Decentralized Autonomous Organization);Organização governada por código e votação on-chain, sem CEO/estrutura central. Exemplo: Uniswap Labs é governado por DAO.;Governança & DAOs
+Governance Token;Token que confere direito de voto em DAO. Exemplo: AAVE para Aave, UNI para Uniswap.;Governança & DAOs
+Proposal (Proposta);Sugestão de mudança em DAO (mudança de parâmetro, alocação de fundos, upgrade). Votada por token holders.;Governança & DAOs
+Quorum;Mínimo % de tokens que devem participar da votação para que seja válida. Garante representatividade.;Governança & DAOs
+Voting Weight;Quantidade de votos que um token confere. 1 token = 1 voto é padrão mas customizável.;Governança & DAOs
+Multisig (Multi-Signature);Endereço que requer múltiplas assinaturas (ex: 3 de 5) para executar transações. Reduz risco de uma chave comprometida. Exemplo: Gnosis Safe.;Governança & DAOs
+Treasury;Fundo da DAO que acumula receitas e financia iniciativas. Gerido por governança.;Governança & DAOs
+Grant Program;DAO aloca fundos para desenvolvedores/criadores construirem em seu ecosistema. Comum em projetos como Uniswap, Arbitrum.;Governança & DAOs
+
+Security Audit;Revisão profissional de código smart contract para encontrar vulnerabilidades. Recomendado pré-deploy em mainnet/produção.;Segurança
+Reentrancy;Vulnerabilidade onde contrato chama outro contrato que o chama de volta antes de atualizar estado. Exploração clássica (DAO hack 2016).;Segurança
+Overflow / Underflow;Aritmética de inteiros sem limite. Overflow: 2^256 + 1 = 0. Underflow: 0 - 1 = 2^256 - 1. Mitigado por Solidity 0.8.0+ (checked math).;Segurança
+Access Control;Mecanismo que restringe acesso a funções (ex: onlyOwner, onlyAdmin). Crítico para proteger operações sensíveis.;Segurança
+Rug Pull;Quando devs/insiders removem liquidez ou fundos do protocolo deixando usuários com tokens sem valor. Golpe comum.;Segurança
+Honeypot;Token que aparenta ser legítimo mas bloqueia venda ou tem fees ocultos. Usuários presos sem poder sair.;Segurança
+Oracle Manipulation;Atacante manipula dados do oráculo (ou explora atraso) para lucrar em protocolo dependente. Risco em protocolos com oráculos simples (ex: DEX price oracle).;Segurança
+Timestamp Dependence;Contratos que dependem de block.timestamp são vulneráveis a manipulação de validadores/miners (mudança de timestamp).;Segurança
+DoS (Denial of Service);Ataque que torna protocolo inutilizável. Exemplos: gas limit attack, infinit loop, crash específico.;Segurança
+Formal Verification;Prova matemática de que código se comporta conforme especificação. Altamente técnico, usado em protocolos críticos.;Segurança
+Slither;Ferramenta OSINT que analisa Solidity para encontrar padrões de vulnerabilidades. Open-source.;Segurança
+MythX;Serviço comercial de análise automática para Solidity. Detecta problemas comuns.;Segurança
+OpenZeppelin;Biblioteca de Smart Contracts auditada e reutilizável (ERC-20, ERC-721, Access Control). Padrão de segurança.;Segurança
+Tenderly;Plataforma que monitora contratos em produção, alertas de anomalias. Ajuda na resposta a incidents.;Segurança
+
+Hardhat;Dev framework para Ethereum. Escrito em TypeScript/JavaScript. Permite compile, deploy, testes, debugging locais. Mainstream em frontend builders.;Dev Tools & Stacks
+Foundry;Framework Rust-like para Solidity. Extremely rápido, testes em Solidity (vs JavaScript). Ganhou tração em DeFi hardcore builders.;Dev Tools & Stacks
+Truffle;Dev framework legacy (ainda funciona). Menos popular que Hardhat/Foundry agora.;Dev Tools & Stacks
+ethers.js;Biblioteca JavaScript para interagir com Ethereum. Leve, tipo-segura (v6+), padrão em dApps modernas.;Dev Tools & Stacks
+web3.js;Biblioteca JavaScript alternativa (mais antiga). Ainda usado mas ethers ganhou preferência em projetos novos.;Dev Tools & Stacks
+Viem;Biblioteca TypeScript-first moderna para blockchain. Tipagem forte, modular, alternativa ao ethers.;Dev Tools & Stacks
+Anvil;Simulador local de blockchain (Foundry). Equivalente ao Hardhat node. Rápido e leve.;Dev Tools & Stacks
+Hardhat Node;Simulador local de blockchain (Hardhat). Full feature, lento que Anvil mas integrado.;Dev Tools & Stacks
+Ganache;Simulador local antigo (Truffle). Ainda existe mas menos popular.;Dev Tools & Stacks
+The Graph / Subgraphs;Framework para indexar dados blockchain. Cria API GraphQL de blockchain data. Essencial para UIs complexas.;Dev Tools & Stacks
+OpenZeppelin Upgrades;Plugin que permite smart contracts upgradeable (proxy pattern). Crítico para manutenção em produção.;Dev Tools & Stacks
+Mocha / Chai;Framework de testes JavaScript padrão no Hardhat. Mocha é test runner, Chai é assertion library.;Dev Tools & Stacks
+Forge / Foundry Testing;Framework de testes em Solidity (Foundry). Extremamente rápido. Escreve testes em Solidity vs TypeScript.;Dev Tools & Stacks
+Alchemy;RPC provider que oferece acesso a nós Ethereum/Polygon. Gerenciado, confiável. Alternativa a rodar node próprio.;Dev Tools & Stacks
+Infura;RPC provider similar ao Alchemy. Mais antigo, muito usado.;Dev Tools & Stacks
+QuickNode;RPC provider com foco em customização e features avançadas.;Dev Tools & Stacks
+React + Vite;Stack frontend padrão em 2024. Vite é bundler rápido, React para UI. Fácil integração com ethers + MetaMask.;Dev Tools & Stacks
+Wagmi;React hooks para blockchain. Simplifica conexão wallet, transações, queries. Padrão em dApps modernos.;Dev Tools & Stacks
+RainbowKit;UI para conexão de wallets. Suporta MetaMask, WalletConnect, etc. Melhora UX significantly.;Dev Tools & Stacks
+ConnectKit;UI para conexão de wallets similar a RainbowKit. Alternativa mais minimalista.;Dev Tools & Stacks
+Etherscan;Block explorer para Ethereum. Visualiza transações, contratos, código verificado. Essencial para auditoria pública.;Dev Tools & Stacks
+Tenderly (Platform);Dashboard para monitoramento e debugging de transações. Oferece simulação de tx pré-envio.;Dev Tools & Stacks
+OpenZeppelin Defender;Plataforma de operações para smart contracts (deploy seguro, pausar contrato, alertas).;Dev Tools & Stacks
+Gnosis Safe;Carteira multisig para operações críticas em produção. Standard em DAOs/protocolos de fundos altos.;Dev Tools & Stacks
+MetaMask;Extensão navegador para gerenciar Ethereum/EVM wallets. Permite conexão a dApps, assinatura de txs. Most used wallet.;Dev Tools & Stacks
+WalletConnect;Protocolo de conexão remota de wallets a dApps. Seguro, permite mobile wallets conectarem a web dApps via QR.;Dev Tools & Stacks
+IPFS;Protocolo de armazenamento descentralizado. Alternativa a servidores centralizados. Usado para armazenar metadados NFT, dados imutáveis.;Dev Tools & Stacks
+Filecoin;Rede de armazenamento que incentiva participação com FIL tokens. Camada econômica sobre IPFS.;Dev Tools & Stacks
+
+Impermanent Loss Calculator;Ferramenta online para estimar impermanent loss em diferentes cenários de preço. Ajuda a decidir se vale ser LP.;Recursos & Calculadoras
+Gas Tracker;Sites como Etherscan, GasNow mostram gas prices em tempo real. Decisor de quando executar txs.;Recursos & Calculadoras
+Token Explorer;Sites para pesquisar tokens: CoinMarketCap, CoinGecko, Etherscan. Vê price, holders, transfers, contracts.;Recursos & Calculadoras
+DeFi Pulse / LlamaIndex;Dashboards que agregam TVL (Total Value Locked) em protocolos DeFi. Métrica de tamanho/saúde de protocolo.;Recursos & Calculadoras
+Portfolio Tracker;Zapper, DeBank permitem ver todos ativos em múltiplas chains/protocols em um dashboard.;Recursos & Calculadoras
+Discord / Twitter (X);Comunidades: siga projetos em Discord/Twitter para updates, news, bugs. Comunidades são core da Web3.;Recursos & Calculadoras
+Whitepaper;Documento técnico que descreve visão, economia, mecanismo de protocolo. Read para entender fundamentais de um projeto.;Recursos & Calculadoras
+Documentation;Docs de protocolos (Uniswap, Aave) explicam APIs, economics, roadmap. Sua principal fonte de verdade de como usar um protocolo.;Recursos & Calculadoras
+YouTube Channels;Canais: Whiteboard Crypto, Smart Contract Programmer, Patrick Collins (Foundry), Austin Griffith (Web3/Scaffold). Aprender fazendo.;Recursos & Calculadoras
+
+Atomicity;Propriedade que uma transação é executada em sua totalidade ou reverted completamente. Não há estado parcial. Garante consistência.;Conceitos Avançados
+Composability;Capacidade de protocolos se combinarem (ex: Uniswap + Aave = swap com borrow). Superpoder do DeFi.;Conceitos Avançados
+Liquidity Mining;Programa onde protocolo recompensa LPs com tokens nativos para atraer capital. Crescimento rápido mas potencial P&D.;Conceitos Avançados
+Yield Bearing Token;Token que crescer em valor (ex: stETH no Lido, aUSDC na Aave). Recebe rendimento do protocolo automaticamente.;Conceitos Avançados
+Leverage;Usar emprestado para amplificar posição. Exemplo: stake 1 ETH, emprestar 2 ETH, comprar 3 ETH total. Retorno amplificado mas risco aumentado.;Conceitos Avançados
+Liquidation Threshold;Nível de colateral (LTV - Loan-to-Value) abaixo do qual posição pode ser liquidada. Exemplo: 80% threshold = 20% buffer de segurança.;Conceitos Avançados
+Collateral;Ativos que você deposita para receber empréstimo. Maior colateral = maior empréstimo. Risco cai, retorno de LP aumenta.;Conceitos Avançados
+Volatility;Medida de mudança de preço. Alta volatilidade = preço muda rapidamente. Afeta liquidation risk, impermanent loss.;Conceitos Avançados
+Hedging;Estratégia de proteger posição contra movimento desfavorável de preço. Exemplo: short em DEX para hedgear long, ganhar em fees.;Conceitos Avançados
+Arbitrage;Explorar diferença de preço do mesmo ativo em diferentes mercados. Rápido, baixa margem, requer velocidade (MEV);Conceitos Avançados
+Price Impact;Efeito que seu trade tem no preço do pool. Trade grande = maior price impact = pior preço executado. Maior em pools pequenos.;Conceitos Avançados
+Fees (Taxas);Protocolo coleta % de valor transacionado. DEX: 0.01-1% por trade. Lending: % APY depositantes e tomadores. Fonte de receita.;Conceitos Avançados
+APY / APR;APY = Annual Percentage Yield (com compounding), APR = Annual Percentage Rate (sem compounding). APY > APR sempre.;Conceitos Avançados
+TVL (Total Value Locked);Valor total de ativos depositados em um protocolo. Métrica de tamanho e saúde. Maior TVL = maior segurança relativa.;Conceitos Avançados
+Airdrop Farming;Estratégia de usar protocolo para qualificar para futuro airdrop de tokens. Risco: airdrop pode nunca acontecer ou ser small.;Conceitos Avançados
+FUD (Fear, Uncertainty, Doubt);Narrativa negativa (verdadeira ou falsa) que causa panic selling. Comum em crypto, ignore noise.;Conceitos Avançados
+HODL;Hold On for Dear Life. Estratégia de longo prazo de manter tokens. Vs trading ativo.;Conceitos Avançados
+Dilution;Aumento de supply de token que reduz % ownership dos holders existentes. Negativo para token, comum em projetos com inflação controlada.;Conceitos Avançados
+Escrow;Contrato que retém fundos até condição ser satisfeita. Exemplo: bridge escrow, multisig escrow para garantir confiança.;Conceitos Avançados
+Protocol Owned Liquidity;DAO/protocolo próprio LP em DEX (vs confiança em LPs externos). Garante liquidez, reduz risco de rugpull de LP.;Conceitos Avançados

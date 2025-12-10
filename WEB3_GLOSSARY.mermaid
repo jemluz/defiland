@@ -1,0 +1,331 @@
+%% Web3 Glossary - Arquitetura Completa com Sub-diagramas
+
+graph TD
+    %% Diagrama 1: Arquitetura Web3 Principal
+    subgraph Main["🔗 Web3: Arquitetura Completa"]
+        A["🔗 Blockchain Foundation"] -->|Resolve confiança e consenso| B["Consensus Mechanisms"]
+        A -->|Armazena e executa| C["Smart Contracts"]
+        
+        B -->|Prova de Trabalho| D["Bitcoin PoW"]
+        B -->|Prova de Participação| E["Ethereum PoS"]
+        B -->|Outras variações| F["Solana, Polkadot..."]
+        
+        C -->|Runtime padrão| G["EVM"]
+        C -->|Linguagens| H["Solidity / Vyper"]
+        
+        G -->|Base para| I["L1 Blockchains"]
+        I -->|Ethereum| J["Mainnet EVM"]
+        I -->|Compatíveis| K["Polygon, Arbitrum, Optimism..."]
+        
+        A -->|Resolve escalabilidade| L["Soluções de Escala"]
+        L -->|Optimistic Rollups| M["Arbitrum, Optimism"]
+        L -->|zk Rollups| N["StarkNet, zkSync"]
+        L -->|Sidechains| O["Polygon PoS"]
+        
+        A -->|Necessita dados externos| P["Oracles"]
+        P -->|Chainlink| Q["Alimenta Smart Contracts"]
+        
+        C -->|Cria| R["Aplicações DeFi"]
+        R -->|Troca de tokens| S["DEX / AMM"]
+        S -->|Uniswap, Curve| T["Liquidez Permissionless"]
+        
+        R -->|Empréstimos| U["Lending Protocols"]
+        U -->|Aave, Compound| V["Crédito Descentralizado"]
+        
+        R -->|Estabilidade| W["Stablecoins"]
+        W -->|Descentralizadas| X["DAI, cUSDC"]
+        W -->|Centralizadas| Y["USDC, USDT"]
+        
+        R -->|Geração de retorno| Z["Yield / Farming"]
+        Z -->|Yearn, Balancer| AA["Otimização de Rendimento"]
+        
+        A -->|Representa propriedade| AB["Tokens"]
+        AB -->|Fungíveis| AC["ERC-20"]
+        AB -->|Únicos| AD["NFT / ERC-721"]
+        
+        AC -->|Casos de uso| AE["Governança, Utilidade"]
+        AD -->|Casos de uso| AF["Colecionáveis, Gaming, RWA"]
+        
+        J -->|Necessita interação| AG["Frontend Stack"]
+        AG -->|Conexão Wallet| AH["MetaMask, WalletConnect"]
+        AG -->|Web3 Libraries| AI["ethers.js, web3.js, viem"]
+        AG -->|UX Framework| AJ["React + Vite + Wagmi"]
+        
+        AG -->|Lê dados eficientemente| AK["Indexers"]
+        AK -->|The Graph| AL["Subgraphs para Queries"]
+        
+        J -->|Infraestrutura| AM["RPC Providers"]
+        AM -->|Alchemy, Infura, QuickNode| AN["Acesso aos Nodes"]
+        
+        J -->|Gerenciar chaves| AO["Wallets"]
+        AO -->|Non-custodial| AP["Usuário controla seed"]
+        AO -->|Custodial| AQ["Terceiro controla chaves"]
+        
+        A -->|Segurança| AR["Riscos Comuns"]
+        AR -->|Reentrância| AS["Auditoria obrigatória"]
+        AR -->|Front-running / MEV| AT["Ordena TX com cuidado"]
+        AR -->|Rug Pulls| AU["Verifique tokenomics"]
+        
+        A -->|Conecta diferentes redes| AV["Bridges"]
+        AV -->|Wormhole, Stargate| AW["Interoperabilidade Cross-chain"]
+        
+        A -->|Governança descentralizada| AX["DAOs"]
+        AX -->|Yearn, MakerDAO| AY["Tomadas de decisão on-chain"]
+    end
+    
+    %% Diagrama 2: Relacao Termos x Projetos x Tipos x Stacks
+    subgraph Mapping["📚 Termos x Projetos x Tipos x Stacks"]
+        T1["Blockchain"]
+        T2["Smart Contract"]
+        T3["Gas"]
+        T4["Token/NFT"]
+        T5["Wallet"]
+        T6["DAO"]
+        
+        P1["Bitcoin"]
+        P2["Ethereum"]
+        P3["Uniswap"]
+        P4["Aave"]
+        P5["Arbitrum"]
+        P6["Polygon"]
+        
+        PJ1["L1 Blockchain"]
+        PJ2["DEX / AMM"]
+        PJ3["Lending"]
+        PJ4["L2 Rollup"]
+        PJ5["DAO Tooling"]
+        PJ6["Wallet"]
+        
+        S1["Solidity + Hardhat + ethers.js"]
+        S2["Rust + Anchor + web3.js"]
+        S3["Vyper + Foundry + viem"]
+        S4["Frontend: React + Wagmi + RainbowKit"]
+        S5["Indexing: The Graph + GraphQL"]
+        S6["Deployment: CI/CD + Tenderly"]
+        
+        T1 -->|Base de| P1
+        T2 -->|Permite| P2
+        T3 -->|Econômico de| T2
+        T4 -->|Criado via| T2
+        T5 -->|Gerencia| T4
+        T6 -->|Governo| P2
+        
+        P1 -->|Exemplo de| PJ1
+        P2 -->|Exemplo de| PJ1
+        P3 -->|Exemplo de| PJ2
+        P4 -->|Exemplo de| PJ3
+        P5 -->|Exemplo de| PJ4
+        P6 -->|Exemplo de| PJ1
+        
+        PJ1 -->|Usa| S1
+        PJ1 -->|Usa| S2
+        PJ2 -->|Usa| S1
+        PJ3 -->|Usa| S3
+        PJ4 -->|Usa| S1
+        
+        PJ1 -->|Integra| S4
+        PJ2 -->|Integra| S4
+        PJ3 -->|Integra| S4
+        
+        S1 -->|Consulta via| S5
+        S2 -->|Consulta via| S5
+        
+        S1 -->|Implanta com| S6
+        S3 -->|Implanta com| S6
+    end
+    
+    %% Diagrama 3: Stack de Desenvolvimento
+    subgraph DevStack["🔨 Stack de Desenvolvimento: Local → Mainnet"]
+        DV1["Local Contracts"]
+        DV2["Solidity / Vyper"]
+        DV3["Hardhat / Foundry"]
+        DV4["Anvil / Hardhat Node"]
+        DV5["localhost:8545"]
+        
+        DV6["React + ethers.js"]
+        DV7["MetaMask / WalletConnect"]
+        DV8["Smart Contracts"]
+        
+        DV9["The Graph Subgraph"]
+        DV10["Queries GraphQL"]
+        
+        DV11["Mocha / Chai / Forge"]
+        DV12["Segurança & Lógica"]
+        
+        DV13["Git + GitHub"]
+        DV14["Script TypeScript"]
+        
+        DV15["Testnet Deploy"]
+        DV16["Etherscan Verify"]
+        
+        DV17["Mainnet Deploy"]
+        DV18["Tenderly Monitor"]
+        
+        DV1 --> DV2
+        DV2 --> DV3
+        DV3 --> DV4
+        DV4 --> DV5
+        DV5 --> DV6
+        DV6 --> DV7
+        DV7 --> DV8
+        DV3 --> DV9
+        DV9 --> DV10
+        DV10 --> DV6
+        
+        DV1 --> DV11
+        DV11 --> DV12
+        
+        DV1 --> DV13
+        DV13 --> DV14
+        DV14 --> DV15
+        DV15 --> DV16
+        DV16 --> DV17
+        DV17 --> DV18
+    end
+    
+    %% Diagrama 4: Problemas vs Soluções
+    subgraph ProbSol["❌ Problemas Tradicionais vs ✅ Soluções Web3"]
+        PR1["Censura Financeira"]
+        PR2["Intermediários"]
+        PR3["Custos Altos"]
+        PR4["Falta de Transparência"]
+        PR5["Crédito Exclusivo"]
+        PR6["Volatilidade"]
+        PR7["Silos de Dados"]
+        
+        SO1["Bitcoin PoW"]
+        SO2["Smart Contracts + DAOs"]
+        SO3["L2 Rollups / Sidechains"]
+        SO4["Blockchain Pública"]
+        SO5["DeFi Lending"]
+        SO6["Stablecoins"]
+        SO7["The Graph / Interop"]
+        
+        PR1 -->|Resolve com| SO1
+        PR2 -->|Resolve com| SO2
+        PR3 -->|Resolve com| SO3
+        PR4 -->|Resolve com| SO4
+        PR5 -->|Resolve com| SO5
+        PR6 -->|Resolve com| SO6
+        PR7 -->|Resolve com| SO7
+    end
+    
+    %% Diagrama 5: Narrativas de Investimento
+    subgraph Narratives["🚀 Narrativas Web3: O 'Porquê' por trás de cada Protocolo"]
+        NAR["Web3 Narrativas"]
+        
+        B_NAR["Bitcoin = Moeda"]
+        B_WHY["Evitar inflação/censura"]
+        
+        E_NAR["Ethereum = Computador Mundial"]
+        E_WHY["Programabilidade da Finança"]
+        
+        L2_NAR["Arbitrum/Optimism = Escalabilidade"]
+        L2_WHY["Reduzir custo por transação"]
+        
+        UNI_NAR["Uniswap = Liquidez Permissionless"]
+        UNI_WHY["Troca descentralizada"]
+        
+        AAVE_NAR["Aave = Crédito Aberto"]
+        AAVE_WHY["Crédito sem banco"]
+        
+        DAI_NAR["DAI = Reserva Descentralizada"]
+        DAI_WHY["Estabilidade on-chain"]
+        
+        SOL_NAR["Solana = Throughput Extremo"]
+        SOL_WHY["DeFi/Gaming em alta frequência"]
+        
+        LINK_NAR["Chainlink = Dados Confiáveis"]
+        LINK_WHY["Oráculos descentralizados"]
+        
+        IPFS_NAR["IPFS/Filecoin = Armazenamento Web3"]
+        IPFS_WHY["Dados sem censura/custody"]
+        
+        GRAPH_NAR["The Graph = API da Blockchain"]
+        GRAPH_WHY["Queries rápidas de blockchain"]
+        
+        NAR --> B_NAR
+        NAR --> E_NAR
+        NAR --> L2_NAR
+        NAR --> UNI_NAR
+        NAR --> AAVE_NAR
+        NAR --> DAI_NAR
+        NAR --> SOL_NAR
+        NAR --> LINK_NAR
+        NAR --> IPFS_NAR
+        NAR --> GRAPH_NAR
+        
+        B_NAR --> B_WHY
+        E_NAR --> E_WHY
+        L2_NAR --> L2_WHY
+        UNI_NAR --> UNI_WHY
+        AAVE_NAR --> AAVE_WHY
+        DAI_NAR --> DAI_WHY
+        SOL_NAR --> SOL_WHY
+        LINK_NAR --> LINK_WHY
+        IPFS_NAR --> IPFS_WHY
+        GRAPH_NAR --> GRAPH_WHY
+    end
+    
+    %% Diagrama 6: Curva de Aprendizado
+    subgraph Learning["📖 Curva de Aprendizado: 8 Semanas para Dominar Web3"]
+        W1["Semana 1: Fundamentos"]
+        W1_T["PoW, Ledger, Descentralização"]
+        
+        W2["Semana 2: Smart Contracts & EVM"]
+        W2_T["Variáveis, funções, transferências"]
+        
+        W3["Semana 3: Dev Environment"]
+        W3_T["Hardhat setup, deploy local"]
+        
+        W4["Semana 4: Token + Faucet"]
+        W4_T["ERC-20, testes, front-end"]
+        
+        W5["Semana 5: DEX / AMM"]
+        W5_T["Liquidez, slippage, AMM math"]
+        
+        W6["Semana 6: Lending"]
+        W6_T["Collateral, interest, risk"]
+        
+        W7["Semana 7: Segurança"]
+        W7_T["Reentrância, overflow, audits"]
+        
+        W8["Semana 8+: Projetos Complexos"]
+        W8_T["AMM, pools, governança"]
+        
+        W1 --> W1_T
+        W1_T --> W2
+        W2 --> W2_T
+        W2_T --> W3
+        W3 --> W3_T
+        W3_T --> W4
+        W4 --> W4_T
+        W4_T --> W5
+        W5 --> W5_T
+        W5_T --> W6
+        W6 --> W6_T
+        W6_T --> W7
+        W7 --> W7_T
+        W7_T --> W8
+        W8 --> W8_T
+    end
+    
+    %% Estilos
+    style A fill:#FF6B6B
+    style B fill:#4ECDC4
+    style C fill:#45B7D1
+    style R fill:#96CEB4
+    style AB fill:#FFEAA7
+    style AG fill:#DDA15E
+    style AM fill:#BC6C25
+    style AO fill:#D291BC
+    style AR fill:#C94C4C
+    style AV fill:#6C63FF
+    style AX fill:#20A39E
+    
+    style Main fill:#FFE5E5,stroke:#FF6B6B,stroke-width:3px
+    style Mapping fill:#E5F5FF,stroke:#45B7D1,stroke-width:2px
+    style DevStack fill:#E5FFE5,stroke:#96CEB4,stroke-width:2px
+    style ProbSol fill:#FFF5E5,stroke:#DDA15E,stroke-width:2px
+    style Narratives fill:#F5E5FF,stroke:#6C63FF,stroke-width:2px
+    style Learning fill:#E5FFFF,stroke:#20A39E,stroke-width:2px
